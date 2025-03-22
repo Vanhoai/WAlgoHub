@@ -1,5 +1,8 @@
+"use client"
+
 import * as React from "react"
 import LocalFont from "next/font/local"
+
 import { ThemeProvider } from "@/components"
 import "./globals.css"
 

@@ -2,31 +2,50 @@
 
 import Image from "next/image"
 import * as React from "react"
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
-import { auth, messaging } from "@/core"
 import { Button, Card, CardContent, GithubSvg, GoogleSvg, GraphSvg, Input, TreeSvg } from "@/components"
-import { getToken } from "firebase/messaging"
+import { getMessaging, getToken } from "firebase/messaging"
+import { firebaseApp } from "@/core"
+import { useRouter } from "next/navigation"
+import { authApi } from "@/apis"
+import { useAccountStore } from "@/store"
 
 const provider = new GoogleAuthProvider()
 
 const OAuthPage: React.FC = () => {
+    const router = useRouter()
+    const auth = getAuth(firebaseApp)
+    const messaging = getMessaging(firebaseApp)
+    const { updateAccount } = useAccountStore()
+
+    const [deviceToken, setDeviceToken] = React.useState<string | null>(null)
+
     const authGoogle = async () => {
         const result = await signInWithPopup(auth, provider)
         const user = result.user
         const idToken = await user.getIdToken(true)
-        console.log({ idToken })
-    }
 
-    const getDeviceToken = async () => {
-        if (!messaging) return
-        const deviceToken = await getToken(messaging, {
-            vapidKey: process.env.VAPID_KEY,
-        })
-        console.log({ deviceToken })
+        if (!idToken || !deviceToken) return
+
+        const req = { idToken, deviceToken }
+        const response = await authApi.oauth(req)
+
+        const account = response.data
+        updateAccount(account)
+        router.push("/")
     }
 
     React.useEffect(() => {
+        const getDeviceToken = async () => {
+            if (!messaging) return
+            const deviceToken = await getToken(messaging, {
+                vapidKey: process.env.VAPID_KEY,
+            })
+
+            setDeviceToken(deviceToken)
+        }
+
         function requestPermission() {
             Notification.requestPermission().then((permission) => {
                 if (permission === "granted") {
@@ -37,7 +56,7 @@ const OAuthPage: React.FC = () => {
         }
 
         requestPermission()
-    }, [])
+    }, [messaging])
 
     return (
         <div className="container mx-auto flex min-h-screen flex-col md:flex-row">
