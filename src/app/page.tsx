@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components"
+import { Button, MainLayout } from "@/components"
 import { firebaseApp } from "@/core"
 import { useAccountStore } from "@/store"
 import { getAuth } from "firebase/auth"
@@ -20,9 +20,11 @@ const Home: React.FC = () => {
     }
 
     return (
-        <div>
-            <Button onClick={() => handleSignOut()}>Logout</Button>
-        </div>
+        <MainLayout>
+            <div>
+                <Button onClick={() => handleSignOut()}>Logout</Button>
+            </div>
+        </MainLayout>
     )
 }
 

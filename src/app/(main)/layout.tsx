@@ -1,17 +1,12 @@
+import { MainLayout } from "@/components"
 import * as React from "react"
 
 interface MainLayoutProps {
     children: React.ReactNode
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-    return (
-        <div>
-            <header>Header</header>
-            {children}
-            <footer>Footer</footer>
-        </div>
-    )
+const Layout: React.FC<MainLayoutProps> = ({ children }) => {
+    return <MainLayout>{children}</MainLayout>
 }
 
-export default MainLayout
+export default Layout
