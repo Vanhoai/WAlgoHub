@@ -121,11 +121,21 @@
     }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+@keyframes shine {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.animation-shine {
+    background: linear-gradient(to right, #a9c46c 20%, #fd6363 70%, #ffc645 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: shine 5s ease-in-out infinite alternate;
 }

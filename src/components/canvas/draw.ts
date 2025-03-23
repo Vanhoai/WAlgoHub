@@ -26,16 +26,17 @@ class Node {
     }
 }
 
-const NODE_SIZE = 60
-const CANVAS_SIZE = 500
+const NODE_SIZE = 50
 const PADDING = 100
 
 class Graph {
     nodes: Node[]
     edges: Edge[]
     adjacency: Map<Node, Node[]>
+    size: number
 
-    constructor(nodes: number, edges: Edge[]) {
+    constructor(nodes: number, edges: Edge[], size: number) {
+        this.size = size
         this.nodes = Array.from({ length: nodes + 1 }).map((_, index) => {
             return new Node(index, 0, 0)
         })
@@ -46,8 +47,8 @@ class Graph {
             let validPosition = false
 
             while (!validPosition) {
-                x = Math.random() * (CANVAS_SIZE - 2 * PADDING) + PADDING
-                y = Math.random() * (CANVAS_SIZE - 2 * PADDING) + PADDING
+                x = Math.random() * (size - 2 * PADDING) + PADDING
+                y = Math.random() * (size - 2 * PADDING) + PADDING
 
                 validPosition = this.nodes.every((node) => {
                     return Math.sqrt(Math.pow(node.x - x, 2) + Math.pow(node.y - y, 2)) > NODE_SIZE
@@ -79,18 +80,19 @@ class GraphSimulation {
     draggingNode: Node | null = null
     offsetX: number = 0
     offsetY: number = 0
+    size: number
 
-    constructor(graph: Graph, canvas: HTMLCanvasElement) {
+    constructor(graph: Graph, canvas: HTMLCanvasElement, size: number) {
+        this.size = size
         this.graph = graph
         this.canvas = canvas
         this.ctx = canvas.getContext("2d")
-        this.canvas.width = 1000
-        this.canvas.height = 1000
-        this.canvas.style.width = "500px"
-        this.canvas.style.height = "500px"
+        this.canvas.width = this.size * 2
+        this.canvas.height = this.size * 2
+        this.canvas.style.width = `${this.size}px`
+        this.canvas.style.height = `${this.size}px`
 
         this.ctx!.scale(2, 2)
-
         requestAnimationFrame(() => this.update())
     }
 
@@ -110,12 +112,12 @@ class GraphSimulation {
             node.y += node.vy
 
             // check impact with line x of canvas
-            if (node.x - NODE_SIZE / 2 < 20 || node.x + NODE_SIZE / 2 > CANVAS_SIZE - 20) {
+            if (node.x - NODE_SIZE / 2 < 20 || node.x + NODE_SIZE / 2 > this.size - 20) {
                 node.vx *= -1
             }
 
             // check impact with line y of canvas
-            if (node.y - NODE_SIZE / 2 < 20 || node.y + NODE_SIZE / 2 > CANVAS_SIZE - 20) {
+            if (node.y - NODE_SIZE / 2 < 20 || node.y + NODE_SIZE / 2 > this.size - 20) {
                 node.vy *= -1
             }
 

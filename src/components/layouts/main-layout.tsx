@@ -8,9 +8,9 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     return (
-        <div className="w-full">
+        <div className="w-full overflow-visible">
             <Header />
-            <div className="container mx-auto">{children}</div>
+            <div className="container mx-auto overflow-visible">{children}</div>
             <Footer />
         </div>
     )

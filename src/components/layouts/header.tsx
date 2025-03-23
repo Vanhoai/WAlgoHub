@@ -23,20 +23,22 @@ const Header: React.FC = () => {
     }
 
     return (
-        <div className="container w-full mx-auto h-20 flex flex-row items-center">
-            <Link href="/">
-                <h1 className="text-2xl font-black me-9 flex-none">M&A 🇻🇳</h1>
-            </Link>
-            <div className="flex-1">
-                <AppNavigation />
-            </div>
+        <div className="h-20 w-full border-b">
+            <div className="container h-full w-full mx-auto flex flex-row items-center">
+                <Link href="/">
+                    <h1 className="text-2xl font-black me-9 flex-none">M&A 🇻🇳</h1>
+                </Link>
+                <div className="flex-1">
+                    <AppNavigation />
+                </div>
 
-            <DropdownAvatar onSignOut={handleLogout}>
-                <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                    <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-            </DropdownAvatar>
+                <DropdownAvatar onSignOut={handleLogout}>
+                    <Avatar>
+                        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                        <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                </DropdownAvatar>
+            </div>
         </div>
     )
 }
