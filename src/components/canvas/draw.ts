@@ -157,7 +157,7 @@ class GraphSimulation {
             this.ctx.beginPath()
             this.ctx.moveTo(u.x, u.y)
             this.ctx.lineTo(v.x, v.y)
-            this.ctx.strokeStyle = "#EAEAEA"
+            this.ctx.strokeStyle = "#B7B7B7"
             this.ctx.lineWidth = 1
             this.ctx.stroke()
         }
@@ -170,11 +170,11 @@ class GraphSimulation {
             this.ctx.arc(node.x, node.y, NODE_SIZE / 2, 0, 2 * Math.PI)
             this.ctx.fillStyle = "#FFFFFF"
             this.ctx.fill()
-            this.ctx.strokeStyle = "#EAEAEA"
+            this.ctx.strokeStyle = "#B7B7B7"
             this.ctx.lineWidth = 1
             this.ctx.stroke()
 
-            this.ctx.fillStyle = "#EAEAEA"
+            this.ctx.fillStyle = "#B7B7B7"
             this.ctx.font = "normal 16px Palatino Linotype"
             this.ctx.textAlign = "center"
             this.ctx.textBaseline = "middle"

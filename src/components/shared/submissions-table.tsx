@@ -1,117 +1,118 @@
 "use client"
 
 import * as React from "react"
-import Image from "next/image"
-import { CheckSvg, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components"
 
-interface ProblemRow {
-    id: string
-    status: boolean
+interface SubmissionRow {
+    when: string
     title: string
-    tags: string[]
-    level: number
-    acceptance: number
+    status: number
+    language: string
+    memory: number
+    time: number
 }
 
-const problems: ProblemRow[] = [
+const submissions: SubmissionRow[] = [
     {
-        id: "#123",
-        status: true,
+        when: new Date().toISOString(),
         title: "Two Sum",
-        tags: ["array", "hash table"],
-        level: 1,
-        acceptance: 99.99,
+        status: 1,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
     {
-        id: "#21",
-        status: false,
-        title: "Reverse Linked List",
-        tags: ["linked list", "recursion"],
-        level: 2,
-        acceptance: 99.99,
+        when: new Date().toISOString(),
+        title: "Find Minimum in Rotated Sorted Array",
+        status: 1,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
     {
-        id: "#3123",
-        status: false,
+        when: new Date().toISOString(),
         title: "Merge Two Sorted Lists",
-        tags: ["linked list"],
-        level: 2,
-        acceptance: 99.99,
+        status: 2,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
     {
-        id: "#41",
-        status: false,
-        title: "Longest Substring Without Repeating Characters",
-        tags: ["string", "sliding window"],
-        level: 2,
-        acceptance: 99.99,
+        when: new Date().toISOString(),
+        title: "Build Binary Search Tree from Preorder Traversal",
+        status: 3,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
     {
-        id: "#532",
-        status: false,
-        title: "Valid Parentheses",
-        tags: ["string", "stack"],
-        level: 2,
-        acceptance: 99.99,
+        when: new Date().toISOString(),
+        title: "Find All Numbers Disappeared in an Array",
+        status: 4,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
     {
-        id: "#6",
-        status: false,
-        title: "Implement strStr()",
-        tags: ["string", "two pointers"],
-        level: 3,
-        acceptance: 99.99,
+        when: new Date().toISOString(),
+        title: "Find All Duplicates in an Array",
+        status: 1,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
     {
-        id: "#7123",
-        status: false,
-        title: "Remove Duplicates from Sorted Array",
-        tags: ["array", "two pointers"],
-        level: 4,
-        acceptance: 99.99,
+        when: new Date().toISOString(),
+        title: "Find All Duplicates in an Array",
+        status: 1,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
     {
-        id: "#812",
-        status: false,
-        title: "Two Sum",
-        tags: ["array", "hash table"],
-        level: 2,
-        acceptance: 99.99,
+        when: new Date().toISOString(),
+        title: "Find All Duplicates in an Array",
+        status: 2,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
     {
-        id: "#912",
-        status: false,
-        title: "Longest Substring Without Repeating Characters",
-        tags: ["string", "sliding window"],
-        level: 2,
-        acceptance: 99.99,
+        when: new Date().toISOString(),
+        title: "Find All Duplicates in an Array",
+        status: 1,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
+    },
+    {
+        when: new Date().toISOString(),
+        title: "Find All Duplicates in an Array",
+        status: 4,
+        language: "C++",
+        memory: 12345,
+        time: 67890,
     },
 ]
 
-const Level: React.FC<{ level: number }> = ({ level }) => {
-    switch (level) {
+const Status: React.FC<{ status: number }> = ({ status }) => {
+    switch (status) {
         case 1:
             return (
-                <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-700/10 ring-inset">
-                    Beginner
+                <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">
+                    Accepted
                 </span>
             )
         case 2:
             return (
-                <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">
-                    Easy
-                </span>
-            )
-        case 3:
-            return (
                 <span className="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">
-                    Medium
+                    Spending
                 </span>
             )
         default:
             return (
                 <span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-red-600/10 ring-inset">
-                    Hard
+                    Time Limit Exceeded
                 </span>
             )
     }
@@ -122,23 +123,25 @@ export const SubmissionsTable: React.FC = () => {
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead>ID</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead>When</TableHead>
                     <TableHead>Title</TableHead>
-                    <TableHead>Level</TableHead>
-                    <TableHead>Acceptance</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Language</TableHead>
+                    <TableHead>Memory</TableHead>
+                    <TableHead>Time</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {problems.map((problem) => (
-                    <TableRow key={problem.id} className="cursor-pointer">
-                        <TableCell className="w-20">{problem.id}</TableCell>
-                        <TableCell>{problem.status && <Image src={CheckSvg} alt="Check Box" />}</TableCell>
-                        <TableCell>{problem.title}</TableCell>
+                {submissions.map((submission, index) => (
+                    <TableRow key={index} className="cursor-pointer">
+                        <TableCell>{submission.when}</TableCell>
+                        <TableCell>{submission.title}</TableCell>
                         <TableCell>
-                            <Level level={problem.level} />
+                            <Status status={submission.status} />
                         </TableCell>
-                        <TableCell className="w-14">{problem.acceptance}%</TableCell>
+                        <TableCell>{submission.language}</TableCell>
+                        <TableCell>{submission.memory}MB</TableCell>
+                        <TableCell>{submission.time}MS</TableCell>
                     </TableRow>
                 ))}
             </TableBody>

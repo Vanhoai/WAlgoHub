@@ -117,7 +117,11 @@ const Level: React.FC<{ level: number }> = ({ level }) => {
     }
 }
 
-export const ProblemTable: React.FC = () => {
+interface ProblemTableProps {
+    onPressAction: (id: string) => void
+}
+
+export const ProblemTable: React.FC<ProblemTableProps> = ({ onPressAction }) => {
     return (
         <Table>
             <TableHeader>
@@ -131,7 +135,7 @@ export const ProblemTable: React.FC = () => {
             </TableHeader>
             <TableBody>
                 {problems.map((problem) => (
-                    <TableRow key={problem.id} className="cursor-pointer">
+                    <TableRow key={problem.id} className="cursor-pointer" onClick={() => onPressAction(problem.id)}>
                         <TableCell className="w-20">{problem.id}</TableCell>
                         <TableCell>{problem.status && <Image src={CheckSvg} alt="Check Box" />}</TableCell>
                         <TableCell>{problem.title}</TableCell>

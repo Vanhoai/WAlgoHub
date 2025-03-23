@@ -12,11 +12,11 @@ const Home: React.FC = () => {
         <MainLayout>
             <main className="flex flex-row h-[85vh] items-center overflow-visible">
                 <div className="flex flex-1 flex-col relative h-full overflow-visible justify-center">
-                    <div className="absolute -z-20 top-0 bottom-0 left-0 right-0 w-[300px] h-[300px] rounded-[250px] bg-green-300 opacity-60 translate-x-[30%] translate-y-[50%]" />
-                    <div className="absolute -z-10 top-0 bottom-0 left-0 right-0 backdrop-blur-2xl"></div>
+                    <div className="absolute -z-20 top-0 bottom-0 left-0 right-0 w-[300px] h-[300px] rounded-[20px] bg-[#A2D96E] opacity-50 translate-x-[30%] translate-y-[50%]" />
+                    <div className="absolute -z-10 top-0 bottom-0 left-0 right-0 backdrop-blur-3xl"></div>
 
                     <div className="flex flex-row items-center gap-2">
-                        <h1 className={`text-[60px] animation-shine ${lilita.className}`}>M & A</h1>
+                        <h1 className={`text-[60px] text-[#A2D96E] ${lilita.className}`}>M & A</h1>
                         <Image src={LightSvg} alt="Light" />
                     </div>
                     <p className="text-[16px] mb-4">

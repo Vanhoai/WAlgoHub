@@ -7,5 +7,17 @@ import ProblemsSvg from "../../../public/svgs/problems.svg"
 import ExploreSvg from "../../../public/svgs/explore.svg"
 import LightSvg from "../../../public/svgs/light.svg"
 import CheckSvg from "../../../public/svgs/check.svg"
+import UpArrowSvg from "../../../public/svgs/up_arrow.svg"
 
-export { GithubSvg, GoogleSvg, GraphSvg, TreeSvg, SubmissionsSvg, ProblemsSvg, ExploreSvg, LightSvg, CheckSvg }
+export {
+    GithubSvg,
+    GoogleSvg,
+    GraphSvg,
+    TreeSvg,
+    SubmissionsSvg,
+    ProblemsSvg,
+    ExploreSvg,
+    LightSvg,
+    CheckSvg,
+    UpArrowSvg,
+}

@@ -24,6 +24,7 @@ export * from "./shared/graphs"
 export * from "./shared/dropdown-avatar"
 export * from "./shared/problems-table"
 export * from "./shared/submissions-table"
+export * from "./shared/Playground"
 
 // canvas
 export * from "./shared/graphs"

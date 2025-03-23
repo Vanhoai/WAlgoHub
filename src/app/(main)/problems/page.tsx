@@ -13,6 +13,7 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination"
+import { useRouter } from "next/navigation"
 
 export function PaginationDemo() {
     return (
@@ -46,14 +47,20 @@ export function PaginationDemo() {
 const tags = ["Graph", "Tree", "Dynamic Programming", "Greedy", "Sorting", "Searching", "Recursion"]
 
 const ProblemsPage: React.FC = () => {
+    const router = useRouter()
+
+    const onPressAction = (id: string) => {
+        console.log({ id })
+        router.push(`/problems/${id.slice(1)}`)
+    }
+
     return (
         <div className="flex flex-col">
             <ShareBreadcrumb />
 
             <div className="flex flex-row gap-4">
                 <div className="flex-1">
-                    <ProblemTable />
-
+                    <ProblemTable onPressAction={onPressAction} />
                     <PaginationDemo />
                 </div>
                 <Card className="w-[260px]">
