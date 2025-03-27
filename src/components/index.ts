@@ -15,6 +15,8 @@ export * from "./ui/checkbox"
 export * from "./ui/breadcrumb"
 export * from "./ui/badge"
 export * from "./ui/pagination"
+export * from "./ui/select"
+export * from "./ui/accordion"
 
 // shard
 export * from "./shared/navigation"
@@ -25,6 +27,7 @@ export * from "./shared/dropdown-avatar"
 export * from "./shared/problems-table"
 export * from "./shared/submissions-table"
 export * from "./shared/Playground"
+export * from "./shared/breadcrumb"
 
 // canvas
 export * from "./shared/graphs"
