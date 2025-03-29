@@ -15,19 +15,16 @@ const provider = new GoogleAuthProvider()
 
 const OAuthPage: React.FC = () => {
     const router = useRouter()
-    const auth = getAuth(firebaseApp)
-    const messaging = getMessaging(firebaseApp)
     const { updateAccount } = useAccountStore()
 
-    const [deviceToken, setDeviceToken] = React.useState<string | null>(null)
-
     const authGoogle = async () => {
-        const result = await signInWithPopup(auth, provider)
+        const result = await signInWithPopup(getAuth(firebaseApp), provider)
         const user = result.user
         const idToken = await user.getIdToken(true)
+        const deviceToken = await getDeviceToken()
 
         if (!idToken || !deviceToken) return
-
+        // FIXME: FirebaseError: Messaging: A problem occurred while subscribing the user to FCM
         const req = { idToken, deviceToken }
         const response = await authApi.oauth(req)
 
@@ -36,27 +33,27 @@ const OAuthPage: React.FC = () => {
         router.push("/")
     }
 
+    const getDeviceToken = async (): Promise<string | null> => {
+        const messaging = getMessaging(firebaseApp)
+        if (!messaging) return null
+        const deviceToken = await getToken(messaging, {
+            vapidKey: process.env.VAPID_KEY,
+        })
+
+        return deviceToken
+    }
+
     React.useEffect(() => {
-        const getDeviceToken = async () => {
-            if (!messaging) return
-            const deviceToken = await getToken(messaging, {
-                vapidKey: process.env.VAPID_KEY,
-            })
-
-            setDeviceToken(deviceToken)
-        }
-
         function requestPermission() {
             Notification.requestPermission().then((permission) => {
                 if (permission === "granted") {
                     console.log("Notification permission granted.")
-                    getDeviceToken()
                 }
             })
         }
 
         requestPermission()
-    }, [messaging])
+    }, [])
 
     return (
         <div className="container mx-auto flex min-h-screen flex-col md:flex-row">

@@ -2,22 +2,23 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { getAuth } from "firebase/auth"
-import { firebaseApp } from "@/core"
 import { useAccountStore } from "@/store"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components"
 
 import { AppNavigation } from "../shared/navigation"
 import { DropdownAvatar } from "../shared/dropdown-avatar"
 import Link from "next/link"
+import { getAuth } from "firebase/auth"
+import { firebaseApp } from "@/core"
 
 const Header: React.FC = () => {
     const router = useRouter()
-    const auth = getAuth(firebaseApp)
+    const firebaseAuth = getAuth(firebaseApp)
     const accountStore = useAccountStore()
 
     const handleLogout = async () => {
-        await auth.signOut()
+        if (!firebaseAuth) return
+        await firebaseAuth.signOut()
         accountStore.updateAccount(null)
         router.push("/oauth")
     }
