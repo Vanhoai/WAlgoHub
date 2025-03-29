@@ -2,13 +2,11 @@
 
 import {
     Breadcrumb,
-    BreadcrumbEllipsis,
     BreadcrumbItem,
     BreadcrumbLink,
     BreadcrumbList,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { usePathname } from "next/navigation"
 
 export function ShareBreadcrumb() {
