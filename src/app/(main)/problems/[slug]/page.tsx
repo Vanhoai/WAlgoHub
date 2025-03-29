@@ -42,7 +42,7 @@ const ProblemPage: React.FC = () => {
                     <h1 className="text-center text-2xl">Count Island</h1>
                     <h2 className="font-bold text-lg">Description</h2>
                     <p>
-                        KazaQ has a knapsack with volume 2⋅n and n kinds of food, where the i-th food's volume is i and
+                        {`KazaQ has a knapsack with volume 2⋅n and n kinds of food, where the i-th food's volume is i and
                         the number of it is ai (1≤i≤n) meaning that the number of the i-th food that KazaQ would like to
                         store into the knapsack is no more than ai, otherwise he would feel sick. KazaQ has a unique
                         taste, therefore all the ai are distinct. KazaQ plans to make a journey but after that he needs
@@ -53,7 +53,7 @@ const ProblemPage: React.FC = () => {
                         the k-th food to store into the knapsack in this two plans are different, KazaQ is intend to
                         know what is the total number of distinct plans for storing one piece of equipment and some food
                         into the knapsack fully. Can you help him? The answer may be very large, so you only need to
-                        give the value of the answer modulo 109+7.
+                        give the value of the answer modulo 109+7.`}
                     </p>
                     <h2 className="font-bold text-lg mt-5">Input</h2>
                     <p>{`The input contains multiple test cases. For each test case: The first line contains two positive integers n and m, satisfying 1≤n≤5⋅104,1≤m≤2⋅n. The second line contains n distinct non-negative integers a1,a2,⋯,an, satisfying 0≤a1<a2<⋯<an≤2⋅n. The third line contains m positive integers b1,b2,⋯,bm, satisfying 1≤b1,b2,⋯,bm≤2⋅n. About 100 test cases in total, where no more than 5 cases satisfy n≥103.`}</p>

@@ -54,7 +54,7 @@ const chapters = [
     },
 ]
 
-export function CourseDescription() {
+function CourseDescription() {
     return (
         <Accordion type="single" collapsible className="w-full">
             {chapters.map((chapter, index) => {

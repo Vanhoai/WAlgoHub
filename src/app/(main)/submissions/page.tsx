@@ -13,7 +13,7 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination"
 
-export function PaginationDemo() {
+function PaginationDemo() {
     return (
         <Pagination className="flex flex-row justify-end mt-6">
             <PaginationContent>
