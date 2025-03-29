@@ -20,7 +20,5 @@ export const getConfigFirebase = () => {
     return config
 }
 
-import firebaseConfig from "../../firebase-config.json"
-
 // Initialize Firebase
-export const firebaseApp = initializeApp(firebaseConfig)
+export const firebaseApp = initializeApp(getConfigFirebase())
