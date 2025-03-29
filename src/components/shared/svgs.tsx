@@ -8,6 +8,9 @@ import ExploreSvg from "../../../public/svgs/explore.svg"
 import LightSvg from "../../../public/svgs/light.svg"
 import CheckSvg from "../../../public/svgs/check.svg"
 import UpArrowSvg from "../../../public/svgs/up_arrow.svg"
+import LockSvg from "../../../public/svgs/lock.svg"
+import DoneSvg from "../../../public/svgs/done.svg"
+import Certificate from "../../../public/svgs/certificate.svg"
 
 export {
     GithubSvg,
@@ -20,4 +23,7 @@ export {
     LightSvg,
     CheckSvg,
     UpArrowSvg,
+    LockSvg,
+    DoneSvg,
+    Certificate,
 }

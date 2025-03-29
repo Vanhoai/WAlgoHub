@@ -17,6 +17,12 @@ export * from "./ui/badge"
 export * from "./ui/pagination"
 export * from "./ui/select"
 export * from "./ui/accordion"
+export * from "./ui/separator"
+export * from "./ui/sheet"
+export * from "./ui/sidebar"
+export * from "./ui/skeleton"
+export * from "./ui/tooltip"
+export * from "./ui/collapsible"
 
 // shard
 export * from "./shared/navigation"

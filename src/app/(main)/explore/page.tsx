@@ -38,7 +38,9 @@ export function SelectSorted() {
     )
 }
 
-const tags = ["Graph", "Tree", "Dynamic Programming", "Greedy", "Sorting", "Searching", "Recursion"]
+const tags = ["Mathematics", "Machine Learning", "Deep Learning", "Data Structure", "Algorithms"]
+const levels = ["Beginner", "Intermediate", "Advanced"]
+
 const image = "https://i.pinimg.com/736x/bb/e8/e3/bbe8e3c11878debd30f10392bf885834.jpg"
 
 const ExplorePage: React.FC = () => {
@@ -55,11 +57,23 @@ const ExplorePage: React.FC = () => {
                             <CardTitle>Filter By</CardTitle>
                         </CardHeader>
                         <CardContent className="flex flex-col gap-3">
+                            <h4 className="text-[16px]">Tags</h4>
+
                             {tags.map((tag) => (
                                 <div key={tag} className="flex flex-row items-center gap-2">
                                     <Checkbox id={tag} />
                                     <label htmlFor={tag} className="text-sm mt-1">
                                         {tag}
+                                    </label>
+                                </div>
+                            ))}
+
+                            <h4 className="text-[16px] mt-6">Levels</h4>
+                            {levels.map((level) => (
+                                <div key={level} className="flex flex-row items-center gap-2">
+                                    <Checkbox id={level} />
+                                    <label htmlFor={level} className="text-sm mt-1">
+                                        {level}
                                     </label>
                                 </div>
                             ))}
@@ -99,8 +113,10 @@ const ExplorePage: React.FC = () => {
                                             practical machine...
                                         </p>
                                         <div className="flex flex-row justify-between mt-1">
-                                            <p>40 exercises</p>
-                                            <p>120 mins read</p>
+                                            <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-700/10 ring-inset">
+                                                Beginner
+                                            </span>
+                                            <p>45 Viewers</p>
                                         </div>
                                     </CardContent>
                                 </Card>

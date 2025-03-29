@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+import { useRouter } from "next/navigation"
 import {
     Avatar,
     AvatarFallback,
@@ -10,9 +12,11 @@ import {
     CardHeader,
     CardTitle,
     ShareBreadcrumb,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
 } from "@/components"
-import * as React from "react"
-import { useRouter } from "next/navigation"
 
 const chapters = [
     {
@@ -50,8 +54,6 @@ const chapters = [
     },
 ]
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-
 export function CourseDescription() {
     return (
         <Accordion type="single" collapsible className="w-full">
@@ -60,8 +62,8 @@ export function CourseDescription() {
                     <AccordionItem value={`item-${index}`} key={chapter.title}>
                         <AccordionTrigger>
                             <div className="flex flex-col">
-                                <h2>{chapter.title}</h2>
-                                <span>{chapter.lessons.length} lessons</span>
+                                <h2 className="text-lg">{chapter.title}</h2>
+                                <span className="text-[16px] text-gray-400">{chapter.lessons.length} lessons</span>
                             </div>
                         </AccordionTrigger>
                         <AccordionContent>
@@ -69,8 +71,8 @@ export function CourseDescription() {
                                 {chapter.lessons.map((lesson, index) => {
                                     return (
                                         <div key={index} className="flex flex-row items-center gap-2">
-                                            <span className="text-[16px]">{index + 1}.</span>
-                                            <span>{lesson.title}</span>
+                                            <span className="text-lg">{index + 1}.</span>
+                                            <span className="text-lg">{lesson.title}</span>
                                         </div>
                                     )
                                 })}
