@@ -50,7 +50,7 @@ const ProblemsPage: React.FC = () => {
     const router = useRouter()
 
     const onPressAction = (id: string) => {
-        router.push(`/problems/${id.slice(1)}`)
+        router.push(`/problem/${id.slice(1)}`)
     }
 
     return (

@@ -23,6 +23,11 @@ export * from "./ui/sidebar"
 export * from "./ui/skeleton"
 export * from "./ui/tooltip"
 export * from "./ui/collapsible"
+export * from "./ui/circular_progress"
+export * from "./ui/label"
+export * from "./ui/tabs"
+export * from "./ui/command"
+export * from "./ui/popover"
 
 // shard
 export * from "./shared/navigation"
