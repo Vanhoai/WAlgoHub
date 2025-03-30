@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/pagination"
 import { useRouter } from "next/navigation"
 
-export function PaginationDemo() {
+function PaginationDemo() {
     return (
         <Pagination className="flex flex-row justify-end mt-6">
             <PaginationContent>

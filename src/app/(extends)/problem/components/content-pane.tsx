@@ -8,7 +8,7 @@ const DescriptionTab = () => {
         <TabsContent value="description" className="flex-1">
             <h2 className="text-xl font-bold text-center mb-3">Count Island</h2>
             <p className="text-[16px]">
-                KazaQ has a knapsack with volume 2⋅n and n kinds of food, where the i-th food's volume is i and the
+                {`KazaQ has a knapsack with volume 2⋅n and n kinds of food, where the i-th food's volume is i and the
                 number of it is ai (1≤i≤n) meaning that the number of the i-th food that KazaQ would like to store into
                 the knapsack is no more than ai, otherwise he would feel sick. KazaQ has a unique taste, therefore all
                 the ai are distinct. <br />
@@ -19,7 +19,7 @@ const DescriptionTab = () => {
                 number of the k-th food to store into the knapsack in this two plans are different, KazaQ is intend to
                 know what is the total number of distinct plans for storing one piece of equipment and some food into
                 the knapsack fully. Can you help him? <br />
-                The answer may be very large, so you only need to give the value of the answer modulo 109+7.
+                The answer may be very large, so you only need to give the value of the answer modulo 109+7.`}
             </p>
 
             <h2 className="text-lg font-bold mt-6">Input</h2>
